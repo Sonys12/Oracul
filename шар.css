@@ -1,0 +1,347 @@
+/* 
+   ШАР.CSS — Стили для страницы «Магический Шар»
+   Здесь реализована глубокая атмосфера мистики с помощью градиентов, 
+   анимаций шёпота и «резиновой» верстки через clamp().
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-dark: #050510;
+  --accent-purple: #7f5cff;
+  --accent-magenta: #c84cff;
+  --glass-bg: rgba(20, 18, 50, 0.85);
+  --glass-border: rgba(127, 92, 255, 0.2);
+  --text-main: #f4f4ff;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at top, #141430 0, #05010b 45%, #000 100%);
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ФОНОВЫЕ ЭФФЕКТЫ */
+#stars {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle linear infinite;
+}
+
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* СЛОЙ ШЁПОТОВ: летающие полупрозрачные фразы */
+.whispers {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.whisper-item {
+  position: absolute;
+  font-size: 0.8rem;
+  color: rgba(244, 244, 255, 0.4);
+  opacity: 0;
+  filter: blur(4px);
+  transition: all 0.8s ease;
+  white-space: nowrap;
+}
+
+.whisper-item.visible {
+  opacity: 1;
+  filter: blur(0px);
+  transform: scale(1.1);
+}
+
+/* ОСНОВНОЙ КОНТЕНТ */
+.page {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: clamp(20px, 5vh, 40px);
+}
+
+.header h1 {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff, var(--accent-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  margin-top: 8px;
+}
+
+/* КОНТЕЙНЕР ШАРА: стеклянный морфизм */
+.center-row {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-inner {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 32px;
+  padding: clamp(20px, 4vw, 40px);
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(127, 92, 255, 0.15);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+}
+
+/* МАГИЧЕСКИЙ ШАР: сложная визуализация с тенями и бликами */
+.ball-wrapper {
+  margin-bottom: 30px;
+  perspective: 1000px;
+}
+
+.ball {
+  width: clamp(240px, 50vw, 380px);
+  height: clamp(240px, 50vw, 380px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 20%, #4a4a9a, #0a0a20 60%, #000 100%);
+  box-shadow:
+    0 0 50px rgba(0, 0, 0, 0.9),
+    0 0 80px rgba(76, 40, 200, 0.4),
+    inset -10px -10px 40px rgba(0, 0, 0, 0.8),
+    inset 10px 10px 40px rgba(127, 92, 255, 0.2);
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ball::after {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  width: 25%;
+  height: 25%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* АНИМАЦИИ ПЛАВАНИЯ И ВРАЩЕНИЯ */
+.float {
+  animation: magicFloat 5s ease-in-out infinite;
+}
+
+@keyframes magicFloat {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+
+  50% {
+    transform: translateY(-15px) rotate(1deg);
+  }
+}
+
+.ball-rotating {
+  animation: spiritualWave 1s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+@keyframes spiritualWave {
+  0% {
+    transform: scale(1) rotate(0);
+  }
+
+  50% {
+    transform: scale(1.05) rotate(5deg);
+    filter: brightness(1.3);
+  }
+
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+/* ВНУТРЕННИЙ ЭКРАН ШАРА */
+.ball-inner {
+  position: absolute;
+  inset: 15%;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #1a1a4a, #050510 80%);
+  box-shadow: 0 0 30px rgba(76, 40, 200, 0.6) inset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.ball-mist {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(127, 92, 255, 0.3), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  filter: blur(10px);
+}
+
+.ball-mist.visible {
+  opacity: 1;
+}
+
+.ball-text {
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: rgba(224, 230, 255, 0.7);
+  transition: all 0.4s ease;
+}
+
+.ball-text.hidden {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.ball-answer {
+  position: absolute;
+  font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #fff;
+  text-shadow: 0 0 15px rgba(127, 92, 255, 1);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ball-answer.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ФОРМА И КНОПКИ */
+.form {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.form input {
+  flex: 1;
+  padding: 14px 20px;
+  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.form input:focus {
+  border-color: var(--accent-purple);
+}
+
+.btn-main {
+  padding: 0 24px;
+  border-radius: 16px;
+  border: none;
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-magenta));
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(127, 92, 255, 0.3);
+}
+
+.btn-main:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(127, 92, 255, 0.5);
+}
+
+.btn-main:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn-home {
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.btn-home:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* АДАПТИВНОСТЬ */
+@media (max-width: 500px) {
+  .form {
+    flex-direction: column;
+  }
+
+  .btn-main {
+    padding: 14px;
+  }
+
+  .center-inner {
+    border-radius: 24px;
+  }
+}

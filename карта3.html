@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Числа Судьбы - Нумерология</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="карта3.css">
+</head>
+
+<body>
+    <div class="stars" id="stars"></div>
+
+    <header class="header">
+        <nav class="nav">
+            <div class="logo" onclick="goHome()">
+                ⭐ На главную
+            </div>
+        </nav>
+    </header>
+
+
+    <section class="hero">
+        <h1>Числа Судьбы</h1>
+        <p>Введите свою дату рождения и имя — мы рассчитаем все числа по дате, числу имени и совместимость.</p>
+    </section>
+
+    <section class="main-inputs">
+        <div class="calc-card">
+            <h3>Ваши данные</h3>
+            <p class="section-note">Эти данные используются для числа судьбы, души, личности, кармического числа и числа
+                имени.</p>
+            <div class="input-group">
+                <label>Дата рождения (ДД.ММ.ГГГГ)</label>
+                <input type="text" id="userBirth" placeholder="01.01.1990" maxlength="10">
+            </div>
+            <div class="input-group">
+                <label>Ваше полное имя</label>
+                <input type="text" id="userName" placeholder="Иванов Иван Иванович">
+            </div>
+            <button class="calc-btn" onclick="calculateAll()">Рассчитать всё</button>
+        </div>
+    </section>
+
+    <section class="calculators">
+        <!-- Число судьбы -->
+        <div class="calc-card">
+            <h3>Число Судьбы</h3>
+            <p class="section-note">Показывает общий жизненный путь, главные уроки и направление судьбы.</p>
+            <div class="result" id="destinyResult">
+                <p class="placeholder">Результат появится после расчета.</p>
+            </div>
+        </div>
+
+        <!-- Число души -->
+        <div class="calc-card">
+            <h3>Число Души</h3>
+            <p class="section-note">Отражает глубинные желания, то, что важно вам на уровне сердца и интуиции.</p>
+            <div class="result" id="soulResult">
+                <p class="placeholder">Результат появится после расчета.</p>
+            </div>
+        </div>
+
+        <!-- Число личности -->
+        <div class="calc-card">
+            <h3>Число Личности</h3>
+            <p class="section-note">Показывает, какой образ вы транслируете миру и как вас видят люди.</p>
+            <div class="result" id="personalityResult">
+                <p class="placeholder">Результат появится после расчета.</p>
+            </div>
+        </div>
+
+        <!-- Кармическое число -->
+        <div class="calc-card">
+            <h3>Кармическое Число</h3>
+            <p class="section-note">Отражает глубинный опыт прошлых жизней и особенности кармических программ.</p>
+            <div class="result" id="karmaResult">
+                <p class="placeholder">Результат появится после расчета.</p>
+            </div>
+        </div>
+
+        <!-- Число имени -->
+        <div class="calc-card">
+            <h3>Число Имени</h3>
+            <p class="section-note">Показывает, какую вибрацию и характер добавляет в вашу судьбу выбранное имя.</p>
+            <div class="result" id="nameResult">
+                <p class="placeholder">Результат появится после расчета.</p>
+            </div>
+        </div>
+
+        <!-- Совместимость -->
+        <div class="calc-card">
+            <h3>Совместимость по дате</h3>
+            <p class="section-note">Оценивает, как сочетаются ваши жизненные числа в дружбе, работе и любви.</p>
+
+            <div class="input-group">
+                <label>Ваша дата рождения (авто)</label>
+                <input type="text" id="compUserDate" disabled placeholder="Будет подставлена из ваших данных">
+            </div>
+            <div class="input-group">
+                <label>Дата партнёра (ДД.ММ.ГГГГ)</label>
+                <input type="text" id="compOtherDate" placeholder="15.05.1985" maxlength="10">
+            </div>
+            <button class="calc-btn" onclick="calculateCompatibility()">Рассчитать совместимость</button>
+
+            <div class="result" id="compResult">
+                <p class="placeholder">Результат появится после расчета.</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="карта3.js"></script>
+</body>
+
+</html>

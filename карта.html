@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Карта дня</title>
+    <link rel="stylesheet" href="карта.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Карта дня</h1>
+        <p class="subtitle">Нажми на карту, чтобы получить послание дня</p>
+    </header>
+
+    <div class="page-layout">
+        <!-- Левая панель -->
+        <aside class="sidebar sidebar-left"></aside>
+
+        <!-- Центр с картой -->
+        <main class="main">
+            <div class="card-wrapper">
+                <div class="card breathing" id="dailyCard">
+                    <div class="card-inner">
+                        <div class="card-face card-front">
+                            <span class="card-placeholder-text">Нажми, чтобы открыть</span>
+                        </div>
+                        <div class="card-face card-back">
+                            <h2 id="cardTitle">Название карты</h2>
+                            <p id="cardText">Здесь появится предсказание.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-panel">
+                    <div class="timer">
+                        <span class="timer-label">Время до следующей карты:</span>
+                        <span class="timer-value" id="timerDisplay">—:—:—</span>
+                    </div>
+                    <button class="btn-home" onclick="window.location.href='index.html'">
+                        Вернуться на главную
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Правая панель -->
+        <aside class="sidebar sidebar-right"></aside>
+    </div>
+
+    <script src="карта.js"></script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оракул</title>
+     <link rel="stylesheet" href="первый.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Привет, к чему хочешь сегодня прислушаться?</h1>
+    </div>
+
+    <div class="container">
+        <div class="lsidebar">
+    <h3>Послание</h3>
+    <p class="lside-text">
+        Мои провидцы,<br>
+        этот сайт создан не для точных предсказаний<br>
+        и не для поиска единственно верного ответа.<br>
+        <br>
+        Здесь нет правильного и неправильного.<br>
+        Есть символы и образы,<br>
+        которые каждый считывает по-своему.<br>
+        Иногда они просто отражают текущее состояние,<br>
+        иногда помогают посмотреть на ситуацию<br>
+        под другим углом.<br>
+        <br>
+        Пусть то, что ты увидишь здесь,<br>
+        не станет решением за тебя,<br>
+        но поможет лучше понять,<br>
+        о чём ты уже догадывался.<br>
+        <br>
+        И если сегодня ты ищешь не ответ,<br>
+        а подтверждение,<br>
+        возможно, ты уже его нашёл.<br>
+        <br>
+        Удачи тебе сегодня.<br>
+        И спокойствия 🌙.
+    </p>
+        </div>
+
+
+        <div class="main">
+            <!-- 
+                ОПТИМИЗАЦИЯ ВИДЕО: 
+                Вместо исходного тяжелого файла используется 'звездопад_opt.mp4'.
+                Мы перекодировали его с помощью кодека H.265 (HEVC), что уменьшило размер 
+                файла почти вдвое (с 1.2 МБ до ~650 КБ) без потери визуального качества.
+            -->
+            <video autoplay muted loop playsinline>
+                <source src="видео/звездопад_opt.mp4" type="video/mp4">
+            </video>
+
+            <!-- 
+                ОПТИМИЗАЦИЯ ИЗОБРАЖЕНИЙ: 
+                Все картинки переведены из форматов PNG/JPG в современный формат WebP.
+                WebP обеспечивает гораздо лучшее сжатие. Например, исходные PNG весили по 3.7 МБ, 
+                а новые WebP весят в разы меньше, что ускоряет загрузку страницы.
+            -->
+            <div class="image-overlay">
+                <div class="image-grid">
+                    <a href="карта.html"><img src="фото/карта.webp" alt="Левая 1" onclick="this.style.transform='scale(0.9)'"></a>
+                    <a href="шар.html"><img src="фото/шар.webp" alt="Правая 1" onclick="this.style.transform='scale(0.9)'"></a>
+                    <a href="письмо.html"><img src="фото/письмо.webp" alt="Левая 2" onclick="this.style.transform='scale(0.9)'"></a>
+                    <a href="карта3.html"><img src="фото/нумерология.webp" alt="Правая 2" onclick="this.style.transform='scale(0.9)'"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="rsidebar">
+            <h3>Связь</h3>
+            <p>Послать знак создателю <br>
+            <br>
+            Если Вселенная привела тебя<br>
+            с мыслью или предложением - <br>
+            не игнорируй её.<br>
+            <br>
+             ✉️tg:<a href="https://t.me/anon_ms_site_bot" target="_blank" rel="noopener noreferrer">
+            @anon_ms_site_bot
+        </a></p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>smt note © 2026</p>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Письмо Вселенной</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="letter.css" />
+</head>
+<body>
+  <!-- Слой неба -->
+  <div class="sky">
+    <div class="sun"></div>
+    <div class="moon"></div>
+    <div class="stars"></div>
+  </div>
+
+  <!-- Приложение поверх неба -->
+  <div class="app">
+    <header class="topbar">
+      <div class="topbar-logo">Почта</div>
+      <div class="topbar-title">Письмо Вселенной</div>
+      <button class="topbar-home" onclick="window.location.href='index.html'">
+        На главную
+      </button>
+    </header>
+
+    <main class="layout">
+      <aside class="sidebar">
+        <button class="btn-compose" disabled>Новое письмо</button>
+        <div class="sidebar-section">
+          <div class="sidebar-label">Папки</div>
+          <ul>
+            <li class="muted">Входящие</li>
+            <li class="muted">Отправленные</li>
+            <li class="muted">Черновики</li>
+          </ul>
+          <p class="sidebar-note">
+            Здесь письма не хранятся. Они уходят и не возвращаются.
+          </p>
+        </div>
+      </aside>
+
+      <section class="center">
+        <div class="compose">
+          <div class="compose-header">
+            <h1>Новое сообщение</h1>
+          </div>
+
+          <div class="compose-field">
+            <label>Кому</label>
+            <div class="compose-to">
+              <span class="pill">Вселенная &lt;universe@nowhere&gt;</span>
+            </div>
+          </div>
+
+          <div class="compose-field">
+            <label for="nameInput">От</label>
+            <input
+              type="text"
+              id="nameInput"
+              placeholder="Твоё имя или ник (можно оставить пустым)"
+            />
+          </div>
+
+          <div class="compose-field">
+            <label for="subjectInput">Тема</label>
+            <input
+              type="text"
+              id="subjectInput"
+              placeholder="Например: «То, что я хочу отпустить»"
+            />
+          </div>
+
+          <div class="compose-body-wrapper" id="bodyWrapper">
+            <textarea
+              id="bodyInput"
+              placeholder="Напиши всё, что хочешь доверить Вселенной. Ответа не будет, письмо просто уйдёт."
+            ></textarea>
+          </div>
+
+          <div class="compose-footer">
+            <button id="sendBtn" class="btn-send">Отправить</button>
+            <span class="status" id="statusText">
+              Письмо не сохраняется и будет отправлено в никуда.
+            </span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="letter.js"></script>
+</body>
+</html>
+

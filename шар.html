@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Магический шар</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="шар.css" />
+</head>
+<body>
+  <!-- Звёздный фон -->
+  <div id="stars"></div>
+
+  <main class="page">
+    <header class="header">
+      <h1>Магический шар</h1>
+      <p class="subtitle">Сформулируй вопрос и доверься первому ответу.</p>
+    </header>
+
+    <!-- Слой с летающими вопросами по всей странице -->
+    <div class="whispers" id="whispersLayer"></div>
+
+    <!-- Центр с шаром -->
+    <section class="center-row">
+      <div class="center-inner">
+        <div class="ball-wrapper">
+          <div class="ball float" id="magicBall">
+            <div class="ball-inner">
+              <div class="ball-mist" id="ballMist"></div>
+              <div class="ball-text" id="ballText">
+                Задай вопрос и нажми «Спросить».
+              </div>
+              <div class="ball-answer" id="ballAnswer"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form">
+          <input
+            type="text"
+            id="questionInput"
+            placeholder="Задай вопрос…"
+            autocomplete="off"
+          />
+          <button id="askBtn" class="btn-main">Спросить</button>
+        </div>
+
+        <p class="after-text" id="afterText"></p>
+
+        <div class="actions">
+
+          <button
+            class="btn-home"
+            onclick="window.location.href='index.html'"
+          >
+            Назад
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="шар.js"></script>
+</body>
+</html>
+

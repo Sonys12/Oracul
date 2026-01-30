@@ -1,0 +1,314 @@
+/* 
+   LETTER.CSS — Стили для страницы «Письмо Вселенной»
+   Здесь создается мечтательная, небесная атмосфера с использованием 
+   динамических градиентов, «мягкого» стекла и плавной типографики.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --day-sky: linear-gradient(180deg, #5fa8ff 0%, #b8ddff 50%, #eef6ff 100%);
+  --night-sky: radial-gradient(circle at top, #20254e 0%, #050714 45%, #000000 100%);
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --accent-blue: #3f9bff;
+  --accent-purple: #7f5cff;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #e8ecff;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background 1.5s ease;
+}
+
+/* -------- НЕБЕСНЫЙ ФОН -------- */
+.sky {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.sky::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--night-sky);
+  transition: background 1.5s ease;
+}
+
+/* Светила: Солнце и Луна */
+.sun,
+.moon {
+  position: absolute;
+  width: clamp(80px, 15vw, 140px);
+  height: clamp(80px, 15vw, 140px);
+  border-radius: 50%;
+  top: 15%;
+  left: 15%;
+  opacity: 0;
+  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sun {
+  background: radial-gradient(circle, #fff9c5 0%, #ffd56a 45%, #f7a83b 70%, transparent 85%);
+  box-shadow: 0 0 60px rgba(255, 190, 92, 0.6);
+}
+
+.moon {
+  background: radial-gradient(circle, #ffffff 0%, #d7e5ff 40%, #9ab0ff 65%, transparent 85%);
+  box-shadow: 0 0 50px rgba(135, 170, 255, 0.5);
+}
+
+/* Звезды */
+.stars {
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 50% 70%, #fff, transparent),
+    radial-gradient(1px 1px at 80% 40%, #fff, transparent);
+  background-size: 200px 200px;
+  animation: starsTwinkle 10s infinite alternate;
+}
+
+@keyframes starsTwinkle {
+  from {
+    opacity: 0.3;
+  }
+
+  to {
+    opacity: 0.7;
+  }
+}
+
+/* -------- ИНТЕРФЕЙС ПРИЛОЖЕНИЯ -------- */
+.app {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+}
+
+/* Шапка ("Почтовый клиент") */
+.topbar {
+  height: 60px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.6);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.topbar-logo {
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.topbar-home {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.topbar-home:hover {
+  background: var(--glass-bg);
+  transform: translateY(-1px);
+}
+
+/* Основная область */
+.layout {
+  flex: 1;
+  display: flex;
+}
+
+/* Боковая панель (Имитация почты) */
+.sidebar {
+  width: clamp(200px, 20vw, 260px);
+  background: rgba(0, 0, 0, 0.3);
+  border-right: 1px solid var(--glass-border);
+  padding: 20px;
+}
+
+.btn-compose {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(127, 92, 255, 0.3);
+}
+
+.sidebar-section ul {
+  list-style: none;
+}
+
+.sidebar-section li {
+  padding: 8px 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: default;
+}
+
+/* Окно создания письма */
+.center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: clamp(10px, 3vw, 40px);
+}
+
+.compose {
+  width: 100%;
+  max-width: 800px;
+  background: rgba(15, 20, 45, 0.85);
+  backdrop-filter: blur(25px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: clamp(15px, 4vw, 30px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.compose-header h1 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.compose-field {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.compose-field label {
+  width: 80px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+}
+
+.pill {
+  padding: 4px 12px;
+  background: var(--glass-bg);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  border: 1px solid var(--glass-border);
+}
+
+.compose-field input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #fff;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+/* Текстовое поле */
+.compose-body-wrapper {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  padding: 5px;
+}
+
+#bodyInput {
+  width: 100%;
+  min-height: 300px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  padding: 15px;
+  font-size: 1rem;
+  line-height: 1.6;
+  outline: none;
+  resize: none;
+}
+
+/* Футер и кнопка */
+.compose-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-send {
+  padding: 10px 30px;
+  border-radius: 25px;
+  border: none;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(63, 155, 255, 0.3);
+}
+
+.btn-send:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(63, 155, 255, 0.5);
+}
+
+.btn-send:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Анимация отправки */
+.compose-body-wrapper.sending {
+  animation: letterFly 1.5s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+}
+
+@keyframes letterFly {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-300px) scale(0.5) rotate(5deg);
+    opacity: 0;
+    filter: blur(10px);
+  }
+}
+
+/* АДАПТИВНОСТЬ */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .center {
+    padding: 15px;
+  }
+
+  .compose {
+    border-radius: 0;
+    min-height: calc(100vh - 60px);
+  }
+}
